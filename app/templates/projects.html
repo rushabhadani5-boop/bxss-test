@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Projects</h2>
+  <table>
+    <thead><tr><th>ID</th><th>Name</th><th>Target URL</th><th>Owner</th><th>Listener URL</th><th>Actions</th></tr></thead>
+    <tbody>
+      {% for p in projects %}
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.target_url }}</td>
+        <td>{{ p.owner.username }}</td>
+        <td><code>{{ listener_base }}/xss/{{ p.id }}</code></td>
+        <td><a href="/projects/{{ p.id }}">Open</a> | <a href="/reports/{{ p.id }}">Report</a></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6">No projects yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

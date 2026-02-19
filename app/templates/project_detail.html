@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Project #{{ project.id }} - {{ project.name }}</h2>
+  <p><strong>Target URL:</strong> {{ project.target_url }}</p>
+  <p><strong>Notes:</strong> {{ project.notes }}</p>
+  <p><strong>Listener URL:</strong> <code>{{ listener_url }}</code></p>
+  <h3>Safe Blind XSS Test Payload</h3>
+  <p>This payload only triggers a harmless callback for authorized testing.</p>
+  <textarea rows="4" readonly>{{ payload }}</textarea>
+</section>
+{% endblock %}

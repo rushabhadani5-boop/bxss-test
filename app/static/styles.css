@@ -1,0 +1,14 @@
+body{font-family:Arial,sans-serif;background:#f5f7fb;margin:0;color:#1d2a3a}
+header{background:#16243a;color:#fff;padding:1rem 1.25rem}
+nav a,nav button{margin-right:.8rem;color:#dbe8ff;background:none;border:none;cursor:pointer;text-decoration:none}
+main{padding:1.25rem}
+.card{background:#fff;padding:1rem;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);margin-bottom:1rem}
+label{display:block;margin:.6rem 0}
+input,textarea,select,button{padding:.5rem;width:100%;max-width:650px}
+button{max-width:250px}
+table{width:100%;border-collapse:collapse;margin-top:.8rem}
+th,td{border:1px solid #d9e1eb;padding:.5rem;text-align:left;vertical-align:top}
+.error{color:#b10000}
+.inline-form{display:inline}
+code,textarea{font-family:monospace}
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;align-items:flex-end}

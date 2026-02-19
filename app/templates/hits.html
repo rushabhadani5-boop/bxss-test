@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Hits</h2>
+  <form method="get" action="/hits" class="filters">
+    <label>Project
+      <select name="project_id">
+        <option value="">All</option>
+        {% for p in projects %}
+          <option value="{{ p.id }}" {% if selected_project == p.id %}selected{% endif %}>{{ p.name }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>From <input type="date" name="from_date" value="{{ from_date }}"></label>
+    <label>To <input type="date" name="to_date" value="{{ to_date }}"></label>
+    <button type="submit">Filter</button>
+    <a href="/hits/export.csv{% if selected_project %}?project_id={{ selected_project }}{% endif %}">Export CSV</a>
+  </form>
+  <table>
+    <thead><tr><th>ID</th><th>Time</th><th>Project</th><th>IP</th><th>UA</th><th>Tag</th><th>Details</th></tr></thead>
+    <tbody>
+      {% for hit, project in rows %}
+      <tr>
+        <td>{{ hit.id }}</td>
+        <td>{{ hit.timestamp }}</td>
+        <td>{{ project.name }}</td>
+        <td>{{ hit.ip_address }}</td>
+        <td>{{ hit.user_agent[:60] }}</td>
+        <td>{{ hit.custom_tag }}</td>
+        <td><a href="/hits/{{ hit.id }}">View</a></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="7">No hits yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

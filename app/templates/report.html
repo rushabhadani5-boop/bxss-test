@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Vulnerability Report - {{ project.name }}</h2>
+  <p><strong>Target:</strong> {{ project.target_url }}</p>
+  <p><strong>Listener Endpoint:</strong> <code>/xss/{{ project.id }}</code></p>
+
+  <h3>Evidence (Recent Hits)</h3>
+  <table>
+    <thead><tr><th>Timestamp</th><th>User-Agent</th><th>Requested URL</th></tr></thead>
+    <tbody>
+      {% for hit in hits %}
+      <tr>
+        <td>{{ hit.timestamp }}</td>
+        <td>{{ hit.user_agent }}</td>
+        <td>{{ hit.full_url }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="3">No evidence yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3>Remediation Advice</h3>
+  <ul>
+    <li>Apply strict output encoding across all templating contexts.</li>
+    <li>Sanitize and validate all user-provided input server-side.</li>
+    <li>Deploy CSP (Content Security Policy) to reduce script execution risk.</li>
+    <li>Use secure cookies and HTTP-only flags for session management.</li>
+  </ul>
+</section>
+{% endblock %}
