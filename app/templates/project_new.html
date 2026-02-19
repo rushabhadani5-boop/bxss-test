@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Create Project</h2>
+  <form method="post" action="/projects">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+    <label>Project Name <input required maxlength="120" name="name"></label>
+    <label>Target URL <input required type="url" name="target_url" placeholder="https://target.internal/path"></label>
+    <label>Notes <textarea name="notes" rows="4" maxlength="4000"></textarea></label>
+    <button type="submit">Create</button>
+  </form>
+</section>
+{% endblock %}

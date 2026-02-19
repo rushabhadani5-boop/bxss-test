@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title or "BXSS Portal" }}</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header>
+  <h1>Internal Blind XSS Monitoring Portal</h1>
+  {% if user %}
+  <nav>
+    <a href="/projects">Projects</a>
+    <a href="/projects/new">Create Project</a>
+    <a href="/hits">Hits</a>
+    {% if user.role == 'admin' %}<a href="/users/register">Register User</a>{% endif %}
+    <form method="post" action="/logout" class="inline-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}" />
+      <button type="submit">Logout ({{ user.username }})</button>
+    </form>
+  </nav>
+  {% endif %}
+</header>
+<main>
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

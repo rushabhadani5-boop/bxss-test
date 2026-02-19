@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Hit #{{ hit.id }}</h2>
+  <ul>
+    <li><strong>Project:</strong> {{ project.name }} (#{{ project.id }})</li>
+    <li><strong>Timestamp:</strong> {{ hit.timestamp }}</li>
+    <li><strong>IP:</strong> {{ hit.ip_address }}</li>
+    <li><strong>User-Agent:</strong> {{ hit.user_agent }}</li>
+    <li><strong>Referer:</strong> {{ hit.referer }}</li>
+    <li><strong>Full URL:</strong> {{ hit.full_url }}</li>
+    <li><strong>Tag:</strong> {{ hit.custom_tag }}</li>
+  </ul>
+</section>
+{% endblock %}
